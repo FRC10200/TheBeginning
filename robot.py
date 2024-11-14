@@ -11,6 +11,9 @@ class MyRobot(wpilib.TimedRobot):
         self.motorRightMaster.setNeutralMode(breakMode)
         self.motorRightSlave.setNeutralMode(breakMode)
 
+        self.motorRightMaster.setSafetyEnabled(True)
+        self.motorRightSlave.setSafetyEnabled(True)
+
         self.right = wpilib.MotorControllerGroup(self.motorRightMaster, self.motorRightSlave)
         self.right.setInverted(True)
 
@@ -20,10 +23,14 @@ class MyRobot(wpilib.TimedRobot):
         self.motorLeftMaster.setNeutralMode(breakMode)
         self.motorLeftSlave.setNeutralMode(breakMode)
 
+        self.motorLeftMaster.setSafetyEnabled(True)
+        self.motorLeftSlave.setSafetyEnabled(True)
+
         self.left = wpilib.MotorControllerGroup(self.motorLeftMaster, self.motorLeftSlave)
         self.left.setInverted(False)
 
         self.robotDrive = wpilib.drive.DifferentialDrive(self.left, self.right)
+        
 
         self.controller = wpilib.XboxController(0)
 
