@@ -1,12 +1,13 @@
 import wpilib
 from phoenix5 import WPI_TalonSRX, NeutralMode
+import wpilib.drive
 
 breakMode = NeutralMode(2)
 
 class MyRobot(wpilib.TimedRobot):
     def robotInit(self) -> None:
-        self.motorRightMaster = WPI_TalonSRX() # TODO: ID do Can
-        self.motorRightSlave = WPI_TalonSRX() # TODO: ID do Can
+        self.motorRightMaster = WPI_TalonSRX(1)
+        self.motorRightSlave = WPI_TalonSRX(2)
 
         self.motorRightMaster.setNeutralMode(breakMode)
         self.motorRightSlave.setNeutralMode(breakMode)
@@ -17,8 +18,8 @@ class MyRobot(wpilib.TimedRobot):
         self.right = wpilib.MotorControllerGroup(self.motorRightMaster, self.motorRightSlave)
         self.right.setInverted(True)
 
-        self.motorLeftMaster = WPI_TalonSRX() # TODO: ID do Can
-        self.motorLeftSlave = WPI_TalonSRX() # TODO: ID do Can
+        self.motorLeftMaster = WPI_TalonSRX(3)
+        self.motorLeftSlave = WPI_TalonSRX(4)
 
         self.motorLeftMaster.setNeutralMode(breakMode)
         self.motorLeftSlave.setNeutralMode(breakMode)
